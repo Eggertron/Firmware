@@ -205,7 +205,7 @@ int do_mag_calibration(orb_advert_t *mavlink_log_pub)
 
 		// Get device id for this mag
 		device_ids[cur_mag] = px4_ioctl(fd, DEVIOCGDEVICEID, 0);
-		internal[cur_mag] = (px4_ioctl(fd, MAGIOCGEXTERNAL, 0) <= 0);
+		internal[cur_mag] = (px4_ioctl(fd, MAGIOCGEXTERNAL, 0) == 0);
 
 		// Reset mag scale
 		result = px4_ioctl(fd, MAGIOCSSCALE, (long unsigned int)&mscale_null);
